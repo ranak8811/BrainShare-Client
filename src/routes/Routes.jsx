@@ -4,6 +4,9 @@ import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import Home from "../pages/Home/Home";
 import Register from "../pages/Register/Register";
 import Login from "../pages/Login/Login";
+import DashboardLayout from "../layouts/DashboardLayout";
+import AddPost from "../pages/Dashboard/User/AddPost/AddPost";
+import PrivateRouter from "./PrivateRouter";
 
 const router = createBrowserRouter([
   {
@@ -24,6 +27,24 @@ const router = createBrowserRouter([
   {
     path: "login",
     element: <Login></Login>,
+  },
+  {
+    path: "/dashboard",
+    element: (
+      <PrivateRouter>
+        <DashboardLayout></DashboardLayout>
+      </PrivateRouter>
+    ),
+    children: [
+      {
+        path: "/dashboard/addPost",
+        element: (
+          <PrivateRouter>
+            <AddPost></AddPost>
+          </PrivateRouter>
+        ),
+      },
+    ],
   },
 ]);
 

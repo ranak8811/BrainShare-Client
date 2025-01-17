@@ -23,13 +23,18 @@ const Register = () => {
     console.log(data);
 
     const photoURL = await imageUpload(data?.image[0]);
+    // console.log(photoURL);
+    // console.log(data.image);
 
     try {
       //2. User Registration
       const result = await registerNewUser(data?.email, data?.password);
 
       //3. Save username & profile photo
-      await updateUserProfile(data?.name, photoURL);
+      await updateUserProfile({
+        displayName: data?.name,
+        photoURL: photoURL,
+      });
       console.log(result);
 
       // save user information in db if user is new
