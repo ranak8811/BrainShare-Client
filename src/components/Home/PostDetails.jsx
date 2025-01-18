@@ -53,6 +53,8 @@ const PostDetails = () => {
       text: comment,
       reported: false,
       feedback: "give your feedback",
+      commenterEmail: user?.email,
+      commenterName: user?.displayName,
     };
 
     try {
