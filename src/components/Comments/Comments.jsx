@@ -12,7 +12,7 @@ const Comments = () => {
   const [selectedComment, setSelectedComment] = useState(null);
   const [modalContent, setModalContent] = useState("");
 
-  // Fetch comments with pagination
+  // fetch comments with pagination
   const {
     data: commentsData = { comments: [], totalPages: 0 },
     isLoading,
@@ -32,12 +32,11 @@ const Comments = () => {
 
   const { comments, totalPages } = commentsData;
 
-  // Handle feedback selection and report button enablement
   const handleFeedbackChange = (comment, feedback) => {
     setSelectedComment({ ...comment, feedback });
   };
 
-  // Handle reporting a comment
+  // handle reporting a comment
   const handleReport = async () => {
     try {
       await axios.patch(
@@ -53,7 +52,7 @@ const Comments = () => {
     }
   };
 
-  // Pagination handler
+  // pagination handler
   const handlePageChange = (page) => {
     setCurrentPage(page);
   };

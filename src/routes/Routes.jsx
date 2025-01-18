@@ -11,6 +11,11 @@ import PostDetails from "../components/Home/PostDetails";
 import MyProfile from "../pages/Dashboard/User/MyProfile/MyProfile";
 import MyPosts from "../pages/Dashboard/User/MyPosts/MyPosts";
 import Comments from "../components/Comments/Comments";
+import AdminProfile from "../pages/Dashboard/Admin/AdminProfile/AdminProfile";
+import ManageUsers from "../pages/Dashboard/Admin/ManageUsers/ManageUsers";
+import ReportedComments from "../pages/Dashboard/Admin/ReportedComments/ReportedComments";
+import MakeAnnouncement from "../pages/Dashboard/Admin/MakeAnnouncement/MakeAnnouncement";
+import AdminRoute from "./AdminRoute";
 
 const router = createBrowserRouter([
   {
@@ -77,6 +82,46 @@ const router = createBrowserRouter([
         element: (
           <PrivateRouter>
             <Comments></Comments>
+          </PrivateRouter>
+        ),
+      },
+      {
+        path: "/dashboard/admin/profile",
+        element: (
+          <PrivateRouter>
+            <AdminRoute>
+              <AdminProfile></AdminProfile>
+            </AdminRoute>
+          </PrivateRouter>
+        ),
+      },
+      {
+        path: "/dashboard/admin/manageUsers",
+        element: (
+          <PrivateRouter>
+            <AdminRoute>
+              <ManageUsers></ManageUsers>
+            </AdminRoute>
+          </PrivateRouter>
+        ),
+      },
+      {
+        path: "/dashboard/admin/reportedComments",
+        element: (
+          <PrivateRouter>
+            <AdminRoute>
+              <ReportedComments></ReportedComments>
+            </AdminRoute>
+          </PrivateRouter>
+        ),
+      },
+      {
+        path: "/dashboard/admin/makeAnnouncement",
+        element: (
+          <PrivateRouter>
+            <AdminRoute>
+              <MakeAnnouncement></MakeAnnouncement>
+            </AdminRoute>
           </PrivateRouter>
         ),
       },

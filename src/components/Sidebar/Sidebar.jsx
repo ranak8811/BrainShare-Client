@@ -3,9 +3,11 @@ import { Link } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 import logo from "../../assets/brain_logo.png";
 import useAuth from "../../hooks/useAuth";
+import useRole from "../../hooks/useRole";
 
 const Sidebar = () => {
   const { user, logOutUser } = useAuth();
+  const [role] = useRole();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
@@ -28,30 +30,79 @@ const Sidebar = () => {
         </div>
         <nav className="mt-6">
           <ul className="space-y-2">
-            <li>
-              <Link
-                to="/dashboard/myProfile"
-                className="block px-4 py-2 text-neutral hover:bg-primary hover:text-base-100 rounded-md"
-              >
-                My Profile
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/dashboard/addPost"
-                className="block px-4 py-2 text-neutral hover:bg-primary hover:text-base-100 rounded-md"
-              >
-                Add Post
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/dashboard/myPosts"
-                className="block px-4 py-2 text-neutral hover:bg-primary hover:text-base-100 rounded-md"
-              >
-                My Posts
-              </Link>
-            </li>
+            {role === "user" && (
+              <li>
+                <Link
+                  to="/dashboard/myProfile"
+                  className="block px-4 py-2 text-neutral hover:bg-primary hover:text-base-100 rounded-md"
+                >
+                  My Profile
+                </Link>
+              </li>
+            )}
+
+            {role === "user" && (
+              <li>
+                <Link
+                  to="/dashboard/addPost"
+                  className="block px-4 py-2 text-neutral hover:bg-primary hover:text-base-100 rounded-md"
+                >
+                  Add Post
+                </Link>
+              </li>
+            )}
+
+            {role === "user" && (
+              <li>
+                <Link
+                  to="/dashboard/myPosts"
+                  className="block px-4 py-2 text-neutral hover:bg-primary hover:text-base-100 rounded-md"
+                >
+                  My Posts
+                </Link>
+              </li>
+            )}
+
+            {role === "admin" && (
+              <li>
+                <Link
+                  to="/dashboard/admin/profile"
+                  className="block px-4 py-2 text-neutral hover:bg-primary hover:text-base-100 rounded-md"
+                >
+                  My Profile
+                </Link>
+              </li>
+            )}
+            {role === "admin" && (
+              <li>
+                <Link
+                  to="/dashboard/admin/manageUsers"
+                  className="block px-4 py-2 text-neutral hover:bg-primary hover:text-base-100 rounded-md"
+                >
+                  Manage Users
+                </Link>
+              </li>
+            )}
+            {role === "admin" && (
+              <li>
+                <Link
+                  to="/dashboard/admin/reportedComments"
+                  className="block px-4 py-2 text-neutral hover:bg-primary hover:text-base-100 rounded-md"
+                >
+                  Reported Comments
+                </Link>
+              </li>
+            )}
+            {role === "admin" && (
+              <li>
+                <Link
+                  to="/dashboard/admin/makeAnnouncement"
+                  className="block px-4 py-2 text-neutral hover:bg-primary hover:text-base-100 rounded-md"
+                >
+                  Make Announcement
+                </Link>
+              </li>
+            )}
           </ul>
         </nav>
         <div className="absolute bottom-4 w-full px-4">

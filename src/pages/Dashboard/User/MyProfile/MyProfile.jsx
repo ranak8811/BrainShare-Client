@@ -7,7 +7,7 @@ import { format } from "date-fns";
 const MyProfile = () => {
   const { user } = useAuth();
 
-  // Fetch user details
+  // fetch user details
   const { data: userData = {}, isLoading } = useQuery({
     queryKey: ["userData", user?.email],
     queryFn: async () => {
