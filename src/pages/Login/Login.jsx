@@ -4,9 +4,9 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import loginLottieData from "../../assets/lottie/login.json";
-import SocialLogin from "../../components/Navbar/SocialLogin/SocialLogin";
 import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
+import SocialLogin from "../../components/SocialLogin/SocialLogin";
 
 const Login = () => {
   const { setUser, loginRegisteredUser } = useAuth();

@@ -8,6 +8,8 @@ import DashboardLayout from "../layouts/DashboardLayout";
 import AddPost from "../pages/Dashboard/User/AddPost/AddPost";
 import PrivateRouter from "./PrivateRouter";
 import PostDetails from "../components/Home/PostDetails";
+import MyProfile from "../pages/Dashboard/User/MyProfile/MyProfile";
+import MyPosts from "../pages/Dashboard/User/MyPosts/MyPosts";
 
 const router = createBrowserRouter([
   {
@@ -50,6 +52,22 @@ const router = createBrowserRouter([
         element: (
           <PrivateRouter>
             <AddPost></AddPost>
+          </PrivateRouter>
+        ),
+      },
+      {
+        path: "/dashboard/myProfile",
+        element: (
+          <PrivateRouter>
+            <MyProfile></MyProfile>
+          </PrivateRouter>
+        ),
+      },
+      {
+        path: "/dashboard/myPosts",
+        element: (
+          <PrivateRouter>
+            <MyPosts></MyPosts>
           </PrivateRouter>
         ),
       },

@@ -12,6 +12,7 @@ import { FaThumbsUp, FaThumbsDown } from "react-icons/fa";
 import useAuth from "../../hooks/useAuth";
 import { format } from "date-fns";
 import toast from "react-hot-toast";
+import LoadingPage from "../../pages/LoadingPage/LoadingPage";
 
 const PostDetails = () => {
   const { id } = useParams();
@@ -36,7 +37,7 @@ const PostDetails = () => {
   });
 
   if (isLoading) {
-    return <div className="text-center py-20">Loading...</div>;
+    return <LoadingPage></LoadingPage>;
   }
 
   const handleCommentSubmit = async () => {

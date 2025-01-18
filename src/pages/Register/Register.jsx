@@ -5,9 +5,9 @@ import { imageUpload, saveUserToDatabase } from "../../api/utils";
 import useAuth from "../../hooks/useAuth";
 import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-import SocialLogin from "../../components/Navbar/SocialLogin/SocialLogin";
 import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import SocialLogin from "../../components/SocialLogin/SocialLogin";
 
 const Register = () => {
   const { registerNewUser, updateUserProfile } = useAuth();

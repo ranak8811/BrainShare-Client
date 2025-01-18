@@ -5,7 +5,7 @@ import logo from "../../assets/brain_logo.png";
 import useAuth from "../../hooks/useAuth";
 
 const Sidebar = () => {
-  const { user } = useAuth();
+  const { user, logOutUser } = useAuth();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
@@ -30,10 +30,10 @@ const Sidebar = () => {
           <ul className="space-y-2">
             <li>
               <Link
-                to="/dashboard/home"
+                to="/dashboard/myProfile"
                 className="block px-4 py-2 text-neutral hover:bg-primary hover:text-base-100 rounded-md"
               >
-                Home
+                My Profile
               </Link>
             </li>
             <li>
@@ -46,10 +46,10 @@ const Sidebar = () => {
             </li>
             <li>
               <Link
-                to="/dashboard/settings"
+                to="/dashboard/myPosts"
                 className="block px-4 py-2 text-neutral hover:bg-primary hover:text-base-100 rounded-md"
               >
-                Settings
+                My Posts
               </Link>
             </li>
           </ul>
@@ -68,7 +68,12 @@ const Sidebar = () => {
                 </p>
               </div>
             </div>
-            <button className="btn btn-error btn-sm mt-4 w-full">Logout</button>
+            <button
+              onClick={logOutUser}
+              className="btn btn-error btn-sm mt-4 w-full"
+            >
+              Logout
+            </button>
           </div>
         </div>
       </div>

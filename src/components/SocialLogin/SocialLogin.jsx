@@ -1,10 +1,10 @@
 import { FaGoogle } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import useAuth from "../../../hooks/useAuth";
-import { saveUserToDatabase } from "../../../api/utils";
 import toast from "react-hot-toast";
 import { AwesomeButton } from "react-awesome-button";
 import "react-awesome-button/dist/styles.css";
+import useAuth from "../../hooks/useAuth";
+import { saveUserToDatabase } from "../../api/utils";
 const SocialLogin = () => {
   const { loginUsingGoogle, setUser } = useAuth();
 

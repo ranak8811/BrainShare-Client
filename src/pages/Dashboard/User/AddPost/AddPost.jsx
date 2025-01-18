@@ -4,9 +4,11 @@ import useAuth from "../../../../hooks/useAuth";
 import { imageUpload } from "../../../../api/utils";
 import toast from "react-hot-toast";
 import useAxiosSecure from "../../../../hooks/axiosSecure";
+import { useNavigate } from "react-router-dom";
 
 const AddPost = () => {
   const axiosSecure = useAxiosSecure();
+  const navigate = useNavigate();
   const { user } = useAuth();
   const [formData, setFormData] = useState({
     imageUrl: null,
@@ -43,6 +45,7 @@ const AddPost = () => {
       // await axios.post(`${import.meta.env.VITE_API_URL}/add-post`, newPost);
       await axiosSecure.post(`/add-post`, newPost);
       toast.success(`Post added successfully`);
+      navigate("/dashboard/myPosts");
     } catch (error) {
       console.error("Error adding post:", error);
       toast.error("Failed to add post. Please try again.");
