@@ -73,7 +73,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/dashboard/comments",
+        path: "/dashboard/comments/:id",
         element: (
           <PrivateRouter>
             <Comments></Comments>

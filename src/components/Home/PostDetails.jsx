@@ -51,6 +51,8 @@ const PostDetails = () => {
       authorName: user.displayName,
       authorEmail: user.email,
       text: comment,
+      reported: false,
+      feedback: "give your feedback",
     };
 
     try {
