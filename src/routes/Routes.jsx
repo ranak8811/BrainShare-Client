@@ -7,6 +7,7 @@ import Login from "../pages/Login/Login";
 import DashboardLayout from "../layouts/DashboardLayout";
 import AddPost from "../pages/Dashboard/User/AddPost/AddPost";
 import PrivateRouter from "./PrivateRouter";
+import PostDetails from "../components/Home/PostDetails";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,14 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
+      },
+      {
+        path: "/details/:id",
+        element: (
+          <PrivateRouter>
+            <PostDetails></PostDetails>
+          </PrivateRouter>
+        ),
       },
     ],
   },

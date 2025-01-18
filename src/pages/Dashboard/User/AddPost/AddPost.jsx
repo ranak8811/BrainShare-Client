@@ -2,7 +2,6 @@ import { useState } from "react";
 import Select from "react-select";
 import useAuth from "../../../../hooks/useAuth";
 import { imageUpload } from "../../../../api/utils";
-// import axios from "axios";
 import toast from "react-hot-toast";
 import useAxiosSecure from "../../../../hooks/axiosSecure";
 
@@ -35,6 +34,7 @@ const AddPost = () => {
       authorName: user.displayName,
       authorEmail: user.email,
       authorImage: user.photoURL,
+      createdAt: new Date().toISOString(),
     };
 
     // console.log("Post Object:", newPost);

@@ -2,8 +2,10 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 import logo from "../../assets/brain_logo.png";
+import useAuth from "../../hooks/useAuth";
 
 const Sidebar = () => {
+  const { user } = useAuth();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
@@ -56,12 +58,14 @@ const Sidebar = () => {
           <div className="border-t border-neutral py-4">
             <div className="flex items-center gap-3">
               <img
-                src="https://via.placeholder.com/40"
-                alt="Profile"
+                src={user?.photoURL}
+                alt={user?.displayName}
                 className="w-10 h-10 rounded-full"
               />
               <div>
-                <p className="text-sm font-medium text-neutral">John Doe</p>
+                <p className="text-sm font-medium text-neutral">
+                  {user?.displayName}
+                </p>
               </div>
             </div>
             <button className="btn btn-error btn-sm mt-4 w-full">Logout</button>
