@@ -10,6 +10,7 @@ import PrivateRouter from "./PrivateRouter";
 import PostDetails from "../components/Home/PostDetails";
 import MyProfile from "../pages/Dashboard/User/MyProfile/MyProfile";
 import MyPosts from "../pages/Dashboard/User/MyPosts/MyPosts";
+import Comments from "../components/Comments/Comments";
 
 const router = createBrowserRouter([
   {
@@ -68,6 +69,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRouter>
             <MyPosts></MyPosts>
+          </PrivateRouter>
+        ),
+      },
+      {
+        path: "/dashboard/comments",
+        element: (
+          <PrivateRouter>
+            <Comments></Comments>
           </PrivateRouter>
         ),
       },
