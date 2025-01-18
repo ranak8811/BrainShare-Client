@@ -20,7 +20,7 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   const onSubmit = async (data) => {
-    console.log(data);
+    // console.log(data);
 
     try {
       const result = await loginRegisteredUser(data?.email, data?.password);

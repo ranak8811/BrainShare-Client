@@ -11,7 +11,7 @@ import {
 } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
-// import axios from "axios";
+import axios from "axios";
 import { app } from "../firebase/firebase.config";
 
 export const AuthContext = createContext();
@@ -64,19 +64,19 @@ const AuthProvider = ({ children }) => {
       if (currentUser?.email) {
         setUser(currentUser);
 
-        // const { data } = await axios.post(
-        //   `${import.meta.env.VITE_API_URL}/jwt`,
-        //   { email: currentUser?.email },
-        //   { withCredentials: true }
-        // );
-        // console.log(data);
+        const { data } = await axios.post(
+          `${import.meta.env.VITE_API_URL}/jwt`,
+          { email: currentUser?.email },
+          { withCredentials: true }
+        );
+        console.log(data);
       } else {
-        // setUser(currentUser);
-        // const { data } = await axios.get(
-        //   `${import.meta.env.VITE_API_URL}/logout`,
-        //   { withCredentials: true }
-        // );
-        // console.log(data);
+        setUser(currentUser);
+        const { data } = await axios.get(
+          `${import.meta.env.VITE_API_URL}/logout`,
+          { withCredentials: true }
+        );
+        console.log(data);
       }
 
       setLoading(false);

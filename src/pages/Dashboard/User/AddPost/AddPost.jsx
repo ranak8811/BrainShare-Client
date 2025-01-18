@@ -2,10 +2,12 @@ import { useState } from "react";
 import Select from "react-select";
 import useAuth from "../../../../hooks/useAuth";
 import { imageUpload } from "../../../../api/utils";
-import axios from "axios";
+// import axios from "axios";
 import toast from "react-hot-toast";
+import useAxiosSecure from "../../../../hooks/axiosSecure";
 
 const AddPost = () => {
+  const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
   const [formData, setFormData] = useState({
     imageUrl: null,
@@ -35,17 +37,16 @@ const AddPost = () => {
       authorImage: user.photoURL,
     };
 
-    console.log("Post Object:", newPost);
+    // console.log("Post Object:", newPost);
 
     try {
-      await axios.post(`${import.meta.env.VITE_API_URL}/add-post`, newPost);
+      // await axios.post(`${import.meta.env.VITE_API_URL}/add-post`, newPost);
+      await axiosSecure.post(`/add-post`, newPost);
       toast.success(`Post added successfully`);
     } catch (error) {
       console.error("Error adding post:", error);
       toast.error("Failed to add post. Please try again.");
     }
-
-    // alert("Post added successfully!");
   };
 
   const handleInputChange = (e) => {
@@ -59,7 +60,7 @@ const AddPost = () => {
     if (file) {
       // const imageUrl = URL.createObjectURL(file);
       const imageUrl = await imageUpload(file);
-      console.log(imageUrl);
+      // console.log(imageUrl);
       setFormData({ ...formData, imageUrl });
     }
   };
