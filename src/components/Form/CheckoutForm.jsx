@@ -21,7 +21,7 @@ const CheckoutForm = () => {
   useEffect(() => {
     getPaymentIntent();
   }, []);
-  console.log(clientSecret);
+  // console.log(clientSecret);
   const getPaymentIntent = async () => {
     try {
       const { data } = await axiosSecure.post(`/create-payment-intent`, {

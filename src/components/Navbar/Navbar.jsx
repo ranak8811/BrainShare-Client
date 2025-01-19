@@ -2,9 +2,11 @@ import { Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import logo from "../../assets/brain_logo.png";
 import { FaBell } from "react-icons/fa";
+import useAnnouncementCount from "../../hooks/useAnnouncementCount";
 
 const Navbar = () => {
-  const { user, logOutUser, announcementCount } = useAuth();
+  const { user, logOutUser } = useAuth();
+  const [count] = useAnnouncementCount();
 
   return (
     <div className="navbar bg-base-100 shadow-md px-4">
@@ -59,7 +61,7 @@ const Navbar = () => {
         <button className="btn btn-ghost relative">
           <FaBell className="text-xl text-secondary" />
           <span className="badge badge-xs p-[7px] absolute top-0 right-0">
-            {announcementCount}
+            {count}
           </span>
         </button>
         {user ? (

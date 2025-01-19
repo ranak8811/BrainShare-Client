@@ -5,11 +5,10 @@ import PostCard from "../../components/Home/PostCard";
 import { useState, useEffect } from "react";
 import AllTags from "../../components/Home/AllTags";
 import ShowAnnouncement from "../../components/Home/ShowAnnouncement";
-// import useAuth from "../../hooks/useAuth";
-// import { format } from "date-fns";
+import useAnnouncementCount from "../../hooks/useAnnouncementCount";
 
 const Home = () => {
-  // const { announcementCount } = useAuth();
+  const [count] = useAnnouncementCount();
   const [search, setSearch] = useState("");
   const [sortByPopularity, setSortByPopularity] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
@@ -77,15 +76,11 @@ const Home = () => {
         <AllTags></AllTags>
       </div>
 
-      {/* {announcementCount && (
+      {count && (
         <div>
           <ShowAnnouncement></ShowAnnouncement>
         </div>
-      )} */}
-
-      <div>
-        <ShowAnnouncement></ShowAnnouncement>
-      </div>
+      )}
 
       <div className="flex items-center justify-between mb-4">
         <button

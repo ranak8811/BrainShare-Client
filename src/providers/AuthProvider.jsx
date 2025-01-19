@@ -20,7 +20,6 @@ const auth = getAuth(app);
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [announcementCount, setAnnouncementCount] = useState(0);
 
   const googleProvider = new GoogleAuthProvider();
 
@@ -58,8 +57,6 @@ const AuthProvider = ({ children }) => {
     registerNewUser,
     updateUserProfile,
     loginRegisteredUser,
-    announcementCount,
-    setAnnouncementCount,
   };
 
   useEffect(() => {

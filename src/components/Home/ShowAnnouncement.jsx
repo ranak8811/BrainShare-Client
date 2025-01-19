@@ -1,30 +1,25 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import LoadingPage from "../../pages/LoadingPage/LoadingPage";
-import useAuth from "../../hooks/useAuth";
 import { useState } from "react";
 
 const ShowAnnouncement = () => {
-  const { setAnnouncementCount } = useAuth();
   const [expanded, setExpanded] = useState(false);
 
-  // Fetch all announcements
+  // fetch all announcements
   const { data: announcements = [], isLoading } = useQuery({
     queryKey: ["announcements"],
     queryFn: async () => {
       const { data } = await axios(
         `${import.meta.env.VITE_API_URL}/get-announcements`
       );
+      // setAnnouncementCount(data.length);
       return data;
     },
   });
 
-  // Update announcement count
-  setAnnouncementCount(announcements.length);
-
   if (isLoading) return <LoadingPage />;
 
-  // Determine the announcements to show
   const visibleAnnouncements = expanded
     ? announcements
     : announcements.slice(0, 2);
