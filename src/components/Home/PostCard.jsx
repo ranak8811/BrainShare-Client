@@ -1,70 +1,66 @@
-import { format } from "date-fns";
-import { Link } from "react-router-dom";
-
 /* eslint-disable react/prop-types */
-const PostCard = ({ post }) => {
-  const {
-    _id,
-    title,
-    imageUrl,
-    description,
-    tag,
-    authorName,
-    authorEmail,
-    authorImage,
-    upVote,
-    downVote,
-    createdAt,
-  } = post;
 
-  const formattedDate = createdAt
-    ? format(new Date(post.createdAt), "PPpp")
-    : "Unknown Date";
+import { format } from "date-fns";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import useAxiosSecure from "../../hooks/axiosSecure";
+import toast from "react-hot-toast";
+
+const PostCard = ({ post }) => {
+  const axiosSecure = useAxiosSecure();
+  const voteDifference = post.upVote - post.downVote;
+  const [commentCount, setCommentCount] = useState(0);
+
+  const getComment = async () => {
+    try {
+      const { data } = await axiosSecure(`/get-comments/${post._id}`);
+      // console.log(data);
+      const { totalComments } = data;
+      setCommentCount(totalComments);
+    } catch (e) {
+      console.log(e);
+      toast.error("Commnet fetching error: ", e.message);
+    }
+  };
+
+  getComment();
+
+  // console.log(commentCount);
 
   return (
-    <div className="card bg-base-100 shadow-md rounded-md overflow-hidden border border-neutral">
-      <Link to={`/details/${_id}`}>
-        <img src={imageUrl} alt={title} className="w-full h-48 object-cover" />
-
-        <div className="p-4">
-          <div className="flex justify-between items-center mb-2">
-            <h3 className="text-xl font-bold text-primary">{title}</h3>
-            <span className="badge badge-outline">{tag}</span>
+    <div className="bg-white p-4 rounded-lg shadow-md border border-gray-300">
+      <Link to={`/details/${post._id}`}>
+        <div className="flex items-center gap-4 mb-4">
+          <img
+            src={post.authorImage}
+            alt={post.authorName}
+            className="w-12 h-12 rounded-full border-2 border-secondary"
+          />
+          <div>
+            <h2 className="text-lg font-bold text-gray-800">{post.title}</h2>
+            <p className="text-sm text-gray-500">By {post.authorName}</p>
           </div>
-
-          <p className="text-sm text-neutral mb-4">
-            {description.length > 100
-              ? description.slice(0, 100) + "..."
-              : description}
+        </div>
+        <img
+          src={post.imageUrl}
+          alt={post.title}
+          className="w-full h-40 object-cover rounded-md mb-4"
+        />
+        <p className="text-gray-600 mb-4">{post.description}</p>
+        <div className="flex items-center justify-between text-sm text-gray-500">
+          <div className="flex items-center gap-2">
+            <span>Tags:</span>
+            <span className="bg-secondary text-white py-1 px-2 rounded-full">
+              {post.tag}
+            </span>
+          </div>
+          <p>Posted on {format(new Date(post.createdAt), "PPpp")}</p>
+        </div>
+        <div className="flex items-center justify-between mt-4">
+          <p className="text-gray-800 font-bold">Votes: {voteDifference}</p>
+          <p className="text-gray-800 font-bold">
+            Comments: {commentCount || 0}
           </p>
-
-          <div className="text-sm text-neutral mb-4">
-            <span className="font-bold">Post time</span> : {formattedDate}
-          </div>
-
-          <div className="flex items-center mb-4">
-            <img
-              src={authorImage}
-              alt={authorName}
-              className="w-10 h-10 rounded-full mr-3"
-            />
-            <div>
-              <h4 className="text-sm font-medium">{authorName}</h4>
-              <p className="text-xs text-neutral">{authorEmail}</p>
-            </div>
-          </div>
-
-          <div className="flex justify-between items-center">
-            <div className="flex items-center space-x-4">
-              <button className="btn btn-sm btn-outline btn-primary">
-                Upvote <span className="ml-2">{upVote}</span>
-              </button>
-              <button className="btn btn-sm btn-outline btn-error">
-                Downvote <span className="ml-2">{downVote}</span>
-              </button>
-            </div>
-            <button className="btn btn-sm btn-secondary">View More</button>
-          </div>
         </div>
       </Link>
     </div>

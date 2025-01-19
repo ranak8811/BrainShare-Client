@@ -42,7 +42,7 @@ const PostDetails = () => {
 
   const handleCommentSubmit = async () => {
     if (!user) {
-      alert("You need to log in to comment.");
+      toast.error("You need to log in to comment.");
       return;
     }
 
@@ -55,6 +55,7 @@ const PostDetails = () => {
       feedback: "give your feedback",
       commenterEmail: user?.email,
       commenterName: user?.displayName,
+      postTitle: post?.title,
     };
 
     try {
