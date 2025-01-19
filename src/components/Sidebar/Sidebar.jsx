@@ -120,7 +120,7 @@ const Sidebar = () => {
             </div>
             <button
               onClick={logOutUser}
-              className="btn btn-error btn-sm mt-4 w-full"
+              className="btn btn-error text-white btn-sm mt-4 w-full"
             >
               Logout
             </button>

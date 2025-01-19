@@ -66,7 +66,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: "",
-        element: <DefaultPage></DefaultPage>,
+        element: (
+          <PrivateRouter>
+            <DefaultPage></DefaultPage>
+          </PrivateRouter>
+        ),
       },
       {
         path: "/dashboard/addPost",
