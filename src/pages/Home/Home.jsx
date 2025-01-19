@@ -3,6 +3,7 @@ import LoadingPage from "../LoadingPage/LoadingPage";
 import { useQuery } from "@tanstack/react-query";
 import PostCard from "../../components/Home/PostCard";
 import { useState, useEffect } from "react";
+import AllTags from "../../components/Home/AllTags";
 // import { format } from "date-fns";
 
 const Home = () => {
@@ -67,6 +68,10 @@ const Home = () => {
             <button className="btn bg-white mt-3">Search</button>
           </form>
         </div>
+      </div>
+
+      <div>
+        <AllTags></AllTags>
       </div>
 
       <div className="flex items-center justify-between mb-4">
