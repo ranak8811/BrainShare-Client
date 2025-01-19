@@ -27,7 +27,7 @@ const AddPost = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Create a new post object
+    // create a new post object
     const newPost = {
       title: formData.title,
       imageUrl: formData.imageUrl,
@@ -72,7 +72,6 @@ const AddPost = () => {
     <div className="max-w-4xl mx-auto p-6 bg-base-100 shadow-md rounded-md  mt-8">
       <h2 className="text-2xl font-bold text-primary mb-6">Add a New Post</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
-        {/* Post Title */}
         <div>
           <label className="block text-sm font-medium text-neutral mb-1">
             Post Title
@@ -87,7 +86,7 @@ const AddPost = () => {
             required
           />
         </div>
-        {/* Author Image */}
+
         <div>
           <label className="block text-sm font-medium text-neutral mb-1">
             Post Image
@@ -100,7 +99,7 @@ const AddPost = () => {
             required
           />
         </div>
-        {/* Post Description */}
+
         <div>
           <label className="block text-sm font-medium text-neutral mb-1">
             Post Description
@@ -115,7 +114,7 @@ const AddPost = () => {
             required
           ></textarea>
         </div>
-        {/* Tag */}
+
         <div>
           <label className="block text-sm font-medium text-neutral mb-1">
             Tag
@@ -129,7 +128,7 @@ const AddPost = () => {
             placeholder="Select a tag"
           />
         </div>
-        {/* Submit Button */}
+
         <div>
           <button type="submit" className="btn btn-primary w-full">
             Add Post

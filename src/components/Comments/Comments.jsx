@@ -140,7 +140,6 @@ const Comments = () => {
         </div>
       )}
 
-      {/* Pagination */}
       <div className="flex justify-center items-center gap-2 mt-6">
         {Array.from({ length: totalPages }, (_, index) => (
           <button
@@ -157,7 +156,6 @@ const Comments = () => {
         ))}
       </div>
 
-      {/* Read More Modal */}
       {modalContent && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
           <div className="bg-white p-6 rounded-md">

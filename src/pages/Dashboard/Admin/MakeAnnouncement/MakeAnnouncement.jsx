@@ -56,7 +56,6 @@ const MakeAnnouncement = () => {
         onSubmit={handleSubmit}
         className="max-w-2xl mx-auto bg-white p-6 rounded-lg shadow-lg border border-accent space-y-4"
       >
-        {/* Author Information */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
             <label className="block text-primary font-semibold mb-1">
@@ -88,7 +87,6 @@ const MakeAnnouncement = () => {
           </div>
         </div>
 
-        {/* Author Email */}
         <div>
           <label className="block text-primary font-semibold mb-1">
             Author Email
@@ -104,7 +102,6 @@ const MakeAnnouncement = () => {
           />
         </div>
 
-        {/* Title */}
         <div>
           <label className="block text-primary font-semibold mb-1">Title</label>
           <input
@@ -118,7 +115,6 @@ const MakeAnnouncement = () => {
           />
         </div>
 
-        {/* Description */}
         <div>
           <label className="block text-primary font-semibold mb-1">
             Description
@@ -134,7 +130,6 @@ const MakeAnnouncement = () => {
           ></textarea>
         </div>
 
-        {/* Submit Button */}
         <button
           type="submit"
           className="w-full bg-accent text-white py-2 px-4 rounded-md hover:bg-secondary transition duration-300"

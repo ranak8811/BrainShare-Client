@@ -21,7 +21,7 @@ const PostDetails = () => {
   const [comments, setComments] = useState([]);
   const shareUrl = `${window.location.origin}/post/${id}`;
 
-  // Fetch post details
+  // fetch post details
   const {
     data: post = {},
     isLoading,
@@ -116,7 +116,6 @@ const PostDetails = () => {
 
   return (
     <div className="max-w-4xl mx-auto p-6 bg-base-100 shadow-md rounded-md mt-8">
-      {/* Post Header */}
       <div className="flex items-center gap-4">
         <img
           src={post.authorImage}
@@ -129,7 +128,6 @@ const PostDetails = () => {
         </div>
       </div>
 
-      {/* Post Content */}
       <div className="mt-6">
         <img
           src={post.imageUrl}
@@ -143,7 +141,6 @@ const PostDetails = () => {
         </span>
       </div>
 
-      {/* Interaction Buttons */}
       <div className="flex items-center gap-6 mt-6">
         <button
           onClick={() => handleUpVote()}
@@ -167,7 +164,6 @@ const PostDetails = () => {
         </div>
       </div>
 
-      {/* Comments Section */}
       <div className="mt-8">
         <h2 className="text-xl font-bold text-primary mb-4">Comments</h2>
         {user ? (

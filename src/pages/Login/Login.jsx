@@ -40,7 +40,6 @@ const Login = () => {
   return (
     <div className="bg-background min-h-screen flex items-center justify-center p-4">
       <div className="bg-white shadow-lg rounded-lg max-w-4xl w-full grid grid-cols-1 md:grid-cols-2">
-        {/* Lottie Animation */}
         <div className="bg-secondary flex items-center justify-center rounded-t-lg md:rounded-t-none md:rounded-l-lg p-6">
           <Lottie
             animationData={loginLottieData}
@@ -48,13 +47,11 @@ const Login = () => {
           />
         </div>
 
-        {/* Login Form */}
         <div className="p-6 flex flex-col justify-center">
           <h2 className="text-2xl font-bold text-primary text-center mb-4">
             Login
           </h2>
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-            {/* Email Field */}
             <div>
               <label
                 className="block text-sm font-medium text-text mb-1"
@@ -76,7 +73,6 @@ const Login = () => {
               )}
             </div>
 
-            {/* Password Field */}
             <div className="relative">
               <label
                 className="block text-sm font-medium text-text mb-1"
@@ -105,7 +101,6 @@ const Login = () => {
               )}
             </div>
 
-            {/* Submit Button */}
             <button
               type="submit"
               className="btn bg-primary hover:bg-secondary text-background w-full mt-4"
@@ -114,7 +109,6 @@ const Login = () => {
             </button>
           </form>
 
-          {/* Toggle between Register and Login */}
           <p className="text-center text-sm text-text mt-4">
             Don&apos;t have an account?{" "}
             <Link to="/register" className="text-primary hover:text-secondary">

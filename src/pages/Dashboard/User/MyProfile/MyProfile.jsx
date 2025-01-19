@@ -26,7 +26,6 @@ const MyProfile = () => {
 
   return (
     <div className="max-w-4xl mx-auto p-6 bg-base-100 shadow-md rounded-md mt-8">
-      {/* Profile Header */}
       <div className="flex items-center gap-6 mb-8">
         <img
           src={userInfo.image}
@@ -37,7 +36,7 @@ const MyProfile = () => {
           <h1 className="text-2xl font-bold text-primary">{userInfo.name}</h1>
           <p className="text-sm text-neutral">{userInfo.email}</p>
         </div>
-        {/* Badges */}
+
         <div className="flex gap-4 ml-auto">
           {userInfo.badge === "bronze" && (
             <div className="flex items-center gap-2 px-4 py-2 bg-yellow-500 text-white rounded-md">
@@ -62,7 +61,6 @@ const MyProfile = () => {
         </div>
       </div>
 
-      {/* My Posts Section */}
       <div>
         <h2 className="text-xl font-bold text-primary mb-4">My Recent Posts</h2>
         {myPosts && myPosts.length > 0 ? (

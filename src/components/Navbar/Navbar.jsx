@@ -8,7 +8,6 @@ const Navbar = () => {
 
   return (
     <div className="navbar bg-base-100 shadow-md px-4">
-      {/* Navbar Start */}
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -45,7 +44,6 @@ const Navbar = () => {
         </Link>
       </div>
 
-      {/* Navbar Center */}
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1 space-x-4">
           <li>
@@ -57,7 +55,6 @@ const Navbar = () => {
         </ul>
       </div>
 
-      {/* Navbar End */}
       <div className="navbar-end space-x-4">
         <button className="btn btn-ghost relative">
           <FaBell className="text-xl text-secondary" />

@@ -16,7 +16,6 @@ const Sidebar = () => {
 
   return (
     <div className="flex min-h-screen">
-      {/* Sidebar */}
       <div
         className={`fixed lg:static z-20 bg-base-100 shadow-md transition-transform duration-300 lg:translate-x-0 ${
           isSidebarOpen ? "translate-x-0" : "-translate-x-full"
@@ -129,7 +128,6 @@ const Sidebar = () => {
         </div>
       </div>
 
-      {/* Main Content */}
       <div className="flex-1 lg:ml-64">
         <div className="bg-base-100 shadow-md px-4 py-3 flex justify-between items-center lg:hidden">
           <h2 className="text-xl font-bold text-primary">BrainShare</h2>

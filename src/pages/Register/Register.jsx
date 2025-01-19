@@ -55,7 +55,6 @@ const Register = () => {
   return (
     <div className="bg-background min-h-screen flex items-center justify-center p-4">
       <div className="bg-white shadow-lg rounded-lg max-w-4xl w-full grid grid-cols-1 md:grid-cols-2">
-        {/* Lottie Animation */}
         <div className="bg-secondary flex items-center justify-center rounded-t-lg md:rounded-t-none md:rounded-l-lg p-6">
           <Lottie
             animationData={registerLottieData}
@@ -63,13 +62,11 @@ const Register = () => {
           />
         </div>
 
-        {/* Registration Form */}
         <div className="p-6 flex flex-col justify-center">
           <h2 className="text-2xl font-bold text-primary text-center mb-4">
             Register
           </h2>
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-            {/* Name Field */}
             <div>
               <label
                 className="block text-sm font-medium text-text mb-1"
@@ -91,7 +88,6 @@ const Register = () => {
               )}
             </div>
 
-            {/* Email Field */}
             <div>
               <label
                 className="block text-sm font-medium text-text mb-1"
@@ -113,7 +109,6 @@ const Register = () => {
               )}
             </div>
 
-            {/* Password Field */}
             <div className="relative">
               <label
                 className="block text-sm font-medium text-text mb-1"
@@ -142,7 +137,6 @@ const Register = () => {
               )}
             </div>
 
-            {/* Image Field */}
             <div>
               <label
                 className="block text-sm font-medium text-text mb-1"
@@ -171,7 +165,7 @@ const Register = () => {
               Register
             </button>
           </form>
-          {/* Toggle between Register and Login */}
+
           <p className="text-center text-sm text-text mt-4">
             Already have an account?{" "}
             <Link to="/login" className="text-primary hover:text-secondary">
