@@ -36,7 +36,7 @@ const ShowAnnouncement = () => {
         {visibleAnnouncements.map((announcement) => (
           <div
             key={announcement._id}
-            className="bg-secondary text-text p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
+            className="bg-base-100 text-text p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
           >
             <div className="flex items-center mb-4">
               <img

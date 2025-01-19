@@ -17,6 +17,7 @@ import ReportedComments from "../pages/Dashboard/Admin/ReportedComments/Reported
 import MakeAnnouncement from "../pages/Dashboard/Admin/MakeAnnouncement/MakeAnnouncement";
 import AdminRoute from "./AdminRoute";
 import Membership from "../pages/Membership/Membership";
+import EditPost from "../pages/Dashboard/User/EditPost/EditPost";
 
 const router = createBrowserRouter([
   {
@@ -67,6 +68,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRouter>
             <AddPost></AddPost>
+          </PrivateRouter>
+        ),
+      },
+      {
+        path: "/dashboard/editPost/:id",
+        element: (
+          <PrivateRouter>
+            <EditPost></EditPost>
           </PrivateRouter>
         ),
       },

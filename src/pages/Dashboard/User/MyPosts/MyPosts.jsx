@@ -4,6 +4,7 @@ import useAuth from "../../../../hooks/useAuth";
 import useAxiosSecure from "../../../../hooks/axiosSecure";
 import LoadingPage from "../../../LoadingPage/LoadingPage";
 import toast from "react-hot-toast";
+import { Link } from "react-router-dom";
 
 const MyPosts = () => {
   const { user } = useAuth();
@@ -60,9 +61,10 @@ const MyPosts = () => {
           <table className="table-auto w-full bg-gray-100 rounded-md shadow-sm">
             <thead>
               <tr className="bg-primary text-white">
-                <th className="py-2 px-4 text-left">Post Title</th>
-                <th className="py-2 px-4 text-left">Votes</th>
-                <th className="py-2 px-4 text-left">Actions</th>
+                <th className="py-2 px-4 text-center">Post Title</th>
+                <th className="py-2 px-4 text-center">Votes</th>
+                <th className="py-2 px-4 text-center">Edit</th>
+                <th className="py-2 px-4 text-center">Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -71,14 +73,20 @@ const MyPosts = () => {
                   <td className="py-2 px-4">{post.title}</td>
                   <td className="py-2 px-4">{post.upVote + post.downVote}</td>
                   <td className="py-2 px-4">
-                    <button
+                    <Link
+                      to={`/dashboard/editPost/${post._id}`}
+                      className="bg-accent text-white px-4 py-2 rounded-md mr-2"
+                    >
+                      Edit
+                    </Link>
+                  </td>
+                  <td className="py-2 px-4">
+                    <Link
+                      to={`/dashboard/comments/${post._id}`}
                       className="bg-blue-500 text-white px-4 py-2 rounded-md mr-2"
-                      onClick={() =>
-                        window.open(`/dashboard/comments/${post._id}`)
-                      }
                     >
                       Comment
-                    </button>
+                    </Link>
                     <button
                       className="bg-red-500 text-white px-4 py-2 rounded-md"
                       onClick={() => handleDelete(post._id)}

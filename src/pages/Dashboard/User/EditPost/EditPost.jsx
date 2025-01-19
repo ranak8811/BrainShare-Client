@@ -1,68 +1,58 @@
-import { useState } from "react";
-import Select from "react-select";
-import useAuth from "../../../../hooks/useAuth";
+import { useNavigate, useParams } from "react-router-dom";
+import useAxiosSecure from "../../../../hooks/axiosSecure";
+import { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import LoadingPage from "../../../LoadingPage/LoadingPage";
 import { imageUpload } from "../../../../api/utils";
 import toast from "react-hot-toast";
-import useAxiosSecure from "../../../../hooks/axiosSecure";
-import { useNavigate } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
-import LoadingPage from "../../../LoadingPage/LoadingPage";
+import Select from "react-select";
 
-const AddPost = () => {
+const EditPost = () => {
+  const { id } = useParams();
   const axiosSecure = useAxiosSecure();
   const navigate = useNavigate();
-  const { user } = useAuth();
   const [formData, setFormData] = useState({
-    imageUrl: null,
     title: "",
     description: "",
+    imageUrl: "",
   });
   const [selectedTag, setSelectedTag] = useState(null);
 
-  // fetch all tags
-  const { data: tags = [], isLoading } = useQuery({
-    queryKey: ["tags"],
+  // fetch the post details
+  const { data: post = {}, isLoading: postLoading } = useQuery({
+    queryKey: ["post", id],
     queryFn: async () => {
-      const { data } = await axios(`${import.meta.env.VITE_API_URL}/tags`);
+      const { data } = await axiosSecure.get(`/posts/${id}`);
       return data;
     },
   });
 
-  if (isLoading) return <LoadingPage />;
+  // fetch all tags
+  const { data: tags = [], isLoading: tagsLoading } = useQuery({
+    queryKey: ["tags"],
+    queryFn: async () => {
+      const { data } = await axiosSecure.get(`/tags`);
+      return data;
+    },
+  });
+
+  useEffect(() => {
+    if (post) {
+      setFormData({
+        title: post.title,
+        description: post.description,
+        imageUrl: post.imageUrl,
+      });
+      setSelectedTag({ value: post.tag, label: post.tag });
+    }
+  }, [post]);
+
+  if (postLoading || tagsLoading) return <LoadingPage />;
 
   const tagsOptions = tags.map((tag) => ({
     value: tag.tag,
     label: tag.tag,
   }));
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    // create a new post object
-    const newPost = {
-      title: formData.title,
-      imageUrl: formData.imageUrl,
-      description: formData.description,
-      tag: selectedTag?.value || "Uncategorized",
-      authorName: user.displayName,
-      authorEmail: user.email,
-      authorImage: user.photoURL,
-      createdAt: new Date().toISOString(),
-    };
-
-    // console.log("Post Object:", newPost);
-
-    try {
-      // await axios.post(`${import.meta.env.VITE_API_URL}/add-post`, newPost);
-      await axiosSecure.post(`/add-post`, newPost);
-      toast.success(`Post added successfully`);
-      navigate("/dashboard/myPosts");
-    } catch (error) {
-      console.error("Error adding post:", error);
-      toast.error("Failed to add post. Please try again.");
-    }
-  };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -71,18 +61,35 @@ const AddPost = () => {
 
   const handleFileChange = async (e) => {
     const file = e.target.files[0];
-    console.log(file);
     if (file) {
-      // const imageUrl = URL.createObjectURL(file);
       const imageUrl = await imageUpload(file);
-      // console.log(imageUrl);
       setFormData({ ...formData, imageUrl });
     }
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const updatedPost = {
+      title: formData.title,
+      imageUrl: formData.imageUrl,
+      description: formData.description,
+      tag: selectedTag?.value || "Uncategorized",
+    };
+
+    try {
+      await axiosSecure.patch(`/update-post/${id}`, updatedPost);
+      toast.success("Post updated successfully");
+      navigate("/dashboard/myPosts");
+    } catch (error) {
+      console.error("Error updating post:", error);
+      toast.error("Failed to update post. Please try again.");
+    }
+  };
+
   return (
-    <div className="max-w-4xl mx-auto p-6 bg-base-100 shadow-md rounded-md  mt-8">
-      <h2 className="text-2xl font-bold text-primary mb-6">Add a New Post</h2>
+    <div className="max-w-4xl mx-auto p-6 bg-base-100 shadow-md rounded-md mt-8">
+      <h2 className="text-2xl font-bold text-primary mb-6">Edit Post</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
           <label className="block text-sm font-medium text-neutral mb-1">
@@ -108,7 +115,6 @@ const AddPost = () => {
             name="image"
             onChange={handleFileChange}
             className="file-input file-input-bordered w-full"
-            required
           />
         </div>
 
@@ -143,7 +149,7 @@ const AddPost = () => {
 
         <div>
           <button type="submit" className="btn btn-primary w-full">
-            Add Post
+            Update Post
           </button>
         </div>
       </form>
@@ -151,4 +157,4 @@ const AddPost = () => {
   );
 };
 
-export default AddPost;
+export default EditPost;
