@@ -4,9 +4,12 @@ import { useQuery } from "@tanstack/react-query";
 import PostCard from "../../components/Home/PostCard";
 import { useState, useEffect } from "react";
 import AllTags from "../../components/Home/AllTags";
+import ShowAnnouncement from "../../components/Home/ShowAnnouncement";
+// import useAuth from "../../hooks/useAuth";
 // import { format } from "date-fns";
 
 const Home = () => {
+  // const { announcementCount } = useAuth();
   const [search, setSearch] = useState("");
   const [sortByPopularity, setSortByPopularity] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
@@ -72,6 +75,16 @@ const Home = () => {
 
       <div>
         <AllTags></AllTags>
+      </div>
+
+      {/* {announcementCount && (
+        <div>
+          <ShowAnnouncement></ShowAnnouncement>
+        </div>
+      )} */}
+
+      <div>
+        <ShowAnnouncement></ShowAnnouncement>
       </div>
 
       <div className="flex items-center justify-between mb-4">

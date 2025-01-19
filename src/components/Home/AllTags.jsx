@@ -17,7 +17,7 @@ const AllTags = () => {
   return (
     <div className="max-w-4xl mx-auto px-4 pb-6">
       <h2 className="text-2xl font-bold text-center">Available Tags</h2>
-      <div className="flex flex-wrap gap-3 justify-center mt-2">
+      <div className="flex flex-wrap gap-3 justify-center mt-4">
         {tags.map((tag) => (
           <div
             key={tag._id}

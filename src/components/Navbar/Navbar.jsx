@@ -4,7 +4,7 @@ import logo from "../../assets/brain_logo.png";
 import { FaBell } from "react-icons/fa";
 
 const Navbar = () => {
-  const { user, logOutUser } = useAuth();
+  const { user, logOutUser, announcementCount } = useAuth();
 
   return (
     <div className="navbar bg-base-100 shadow-md px-4">
@@ -58,7 +58,9 @@ const Navbar = () => {
       <div className="navbar-end space-x-4">
         <button className="btn btn-ghost relative">
           <FaBell className="text-xl text-secondary" />
-          <span className="badge badge-xs badge-primary absolute top-0 right-0"></span>
+          <span className="badge badge-xs p-[7px] absolute top-0 right-0">
+            {announcementCount}
+          </span>
         </button>
         {user ? (
           <div className="dropdown dropdown-end">
