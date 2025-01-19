@@ -18,6 +18,7 @@ import MakeAnnouncement from "../pages/Dashboard/Admin/MakeAnnouncement/MakeAnno
 import AdminRoute from "./AdminRoute";
 import Membership from "../pages/Membership/Membership";
 import EditPost from "../pages/Dashboard/User/EditPost/EditPost";
+import DefaultPage from "../pages/Dashboard/DefaultPage/DefaultPage";
 
 const router = createBrowserRouter([
   {
@@ -63,10 +64,10 @@ const router = createBrowserRouter([
       </PrivateRouter>
     ),
     children: [
-      // {
-      //   path: '',
-      //   element:
-      // },
+      {
+        path: "",
+        element: <DefaultPage></DefaultPage>,
+      },
       {
         path: "/dashboard/addPost",
         element: (

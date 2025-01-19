@@ -5,7 +5,7 @@ const DashboardLayout = () => {
   return (
     <section className="relative min-h-screen md:flex bg-white">
       <Sidebar></Sidebar>
-      <div>
+      <div className="flex justify-center items-center">
         <Outlet></Outlet>
       </div>
     </section>

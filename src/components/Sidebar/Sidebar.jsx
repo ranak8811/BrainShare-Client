@@ -15,7 +15,7 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="flex min-h-screen">
+    <div className="flex lg:min-h-screen">
       <div
         className={`fixed lg:static z-20 bg-base-100 shadow-md transition-transform duration-300 lg:translate-x-0 ${
           isSidebarOpen ? "translate-x-0" : "-translate-x-full"
