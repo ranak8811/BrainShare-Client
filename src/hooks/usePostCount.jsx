@@ -7,7 +7,7 @@ const usePostCount = () => {
 
   // fetch user details
   const { data: userData = {}, isLoading } = useQuery({
-    queryKey: ["userData", user?.email],
+    queryKey: ["userDataa", user?.email],
     queryFn: async () => {
       const { data } = await axios.get(
         `${import.meta.env.VITE_API_URL}/userInfo/${user?.email}`

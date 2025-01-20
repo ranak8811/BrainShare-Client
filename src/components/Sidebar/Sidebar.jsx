@@ -6,6 +6,7 @@ import useAuth from "../../hooks/useAuth";
 import useRole from "../../hooks/useRole";
 import usePostCount from "../../hooks/usePostCount";
 import LoadingPage from "../../pages/LoadingPage/LoadingPage";
+import toast from "react-hot-toast";
 
 const Sidebar = () => {
   const { user, logOutUser } = useAuth();
@@ -27,11 +28,18 @@ const Sidebar = () => {
           isSidebarOpen ? "translate-x-0" : "-translate-x-full"
         } w-64 h-full`}
       >
-        <div>
+        <div className="md:flex lg:block gap-3 justify-center items-center">
           <Link to={"/"} className="p-4 flex items-center gap-2">
             <img src={logo} alt="Logo" className="w-10 h-10" />
             <h1 className="text-xl font-bold text-primary">BrainShare</h1>
           </Link>
+
+          <button
+            onClick={toggleSidebar}
+            className="btn btn-ghost btn-square hidden md:block lg:hidden"
+          >
+            <FaBars size={20} />
+          </button>
         </div>
         <nav className="mt-6">
           <ul className="space-y-2">
@@ -51,6 +59,11 @@ const Sidebar = () => {
                 {badge === "bronze" && postCount >= 5 ? (
                   <Link
                     to={"/membership"}
+                    onClick={() =>
+                      toast.success(
+                        "Become a Member to upload more then 5 posts"
+                      )
+                    }
                     className="block px-4 py-2 text-neutral hover:bg-primary hover:text-base-100 rounded-md"
                   >
                     Add Post
