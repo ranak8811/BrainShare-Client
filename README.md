@@ -106,6 +106,12 @@ Brainshare aims to provide a collaborative environment where users can exchange 
 
 5. Open your browser and navigate to `http://localhost:4000`.
 
+---
+
+## Backend Repository
+
+Backend code link: https://github.com/Programming-Hero-Web-Course4/b10a12-server-side-ranak8811
+
 ## Contribution
 
 Contributions are welcome! Feel free to fork the repository and submit pull requests.
