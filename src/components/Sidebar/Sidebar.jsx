@@ -4,15 +4,19 @@ import { FaBars } from "react-icons/fa";
 import logo from "../../assets/brain_logo.png";
 import useAuth from "../../hooks/useAuth";
 import useRole from "../../hooks/useRole";
+import usePostCount from "../../hooks/usePostCount";
 
 const Sidebar = () => {
   const { user, logOutUser } = useAuth();
   const [role] = useRole();
+  const [postCount, badge] = usePostCount();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
+
+  console.log(postCount, badge);
 
   return (
     <div className="flex lg:min-h-screen">
@@ -42,12 +46,21 @@ const Sidebar = () => {
 
             {role === "user" && (
               <li>
-                <Link
-                  to="/dashboard/addPost"
-                  className="block px-4 py-2 text-neutral hover:bg-primary hover:text-base-100 rounded-md"
-                >
-                  Add Post
-                </Link>
+                {badge === "bronze" && postCount >= 5 ? (
+                  <Link
+                    to={"/membership"}
+                    className="block px-4 py-2 text-neutral hover:bg-primary hover:text-base-100 rounded-md"
+                  >
+                    Add Post
+                  </Link>
+                ) : (
+                  <Link
+                    to="/dashboard/addPost"
+                    className="block px-4 py-2 text-neutral hover:bg-primary hover:text-base-100 rounded-md"
+                  >
+                    Add Post
+                  </Link>
+                )}
               </li>
             )}
 

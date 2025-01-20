@@ -31,6 +31,7 @@ const Comments = () => {
   });
 
   const { comments, totalPages } = commentsData;
+  // console.log(commentsData);
 
   const handleFeedbackChange = (comment, feedback) => {
     setSelectedComment({ ...comment, feedback });
@@ -63,7 +64,14 @@ const Comments = () => {
 
   return (
     <div className="max-w-4xl mx-auto p-6 bg-base-100 shadow-md rounded-md mt-8">
-      <h1 className="text-2xl font-bold text-primary mb-6">Comments</h1>
+      <h1 className="text-2xl font-bold text-primary mb-3">Comments</h1>
+
+      <h3 className="mb-3">
+        {" "}
+        <span className="font-bold text-accent">Post Title: </span>
+        {comments[0]?.postTitle ||
+          "Title is not set for this comments collection"}
+      </h3>
 
       {comments.length === 0 ? (
         <p className="text-neutral">No comments available for this post.</p>
