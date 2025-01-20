@@ -1,7 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import errorImage from "../../assets/error_image.avif";
+import useTitle from "../../../public/PageTitle/title";
 
 const ErrorPage = () => {
+  useTitle("Error Page");
   const navigate = useNavigate();
 
   const goBack = () => {

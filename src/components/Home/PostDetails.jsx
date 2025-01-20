@@ -13,8 +13,10 @@ import useAuth from "../../hooks/useAuth";
 import { format } from "date-fns";
 import toast from "react-hot-toast";
 import LoadingPage from "../../pages/LoadingPage/LoadingPage";
+import useTitle from "../../../public/PageTitle/title";
 
 const PostDetails = () => {
+  useTitle("Post Details");
   const { id } = useParams();
   const { user } = useAuth();
   const [comment, setComment] = useState("");

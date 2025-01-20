@@ -3,8 +3,10 @@ import useAxiosSecure from "../../../../hooks/axiosSecure";
 import useAuth from "../../../../hooks/useAuth";
 import LoadingPage from "../../../LoadingPage/LoadingPage";
 import toast from "react-hot-toast";
+import useTitle from "../../../../../public/PageTitle/title";
 
 const ReportedComments = () => {
+  useTitle("Reported Comments");
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
 

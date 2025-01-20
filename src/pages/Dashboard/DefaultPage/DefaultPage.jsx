@@ -2,8 +2,10 @@ import { FaUser, FaPlus, FaBullhorn, FaFlag } from "react-icons/fa";
 import { MdPostAdd, MdOutlineManageAccounts } from "react-icons/md";
 import useAuth from "../../../hooks/useAuth";
 import useRole from "../../../hooks/useRole";
+import useTitle from "../../../../public/PageTitle/title";
 
 const DefaultPage = () => {
+  useTitle("Dashboard");
   const { user } = useAuth();
   const [role] = useRole();
 

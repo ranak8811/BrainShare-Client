@@ -7,8 +7,10 @@ import loginLottieData from "../../assets/lottie/login.json";
 import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
 import SocialLogin from "../../components/SocialLogin/SocialLogin";
+import useTitle from "../../../public/PageTitle/title";
 
 const Login = () => {
+  useTitle("Login");
   const { setUser, loginRegisteredUser } = useAuth();
   const navigate = useNavigate();
   const {

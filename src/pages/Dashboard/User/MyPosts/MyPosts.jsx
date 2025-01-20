@@ -5,8 +5,10 @@ import useAxiosSecure from "../../../../hooks/axiosSecure";
 import LoadingPage from "../../../LoadingPage/LoadingPage";
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
+import useTitle from "../../../../../public/PageTitle/title";
 
 const MyPosts = () => {
+  useTitle("My Posts");
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
   const [currentPage, setCurrentPage] = useState(1);

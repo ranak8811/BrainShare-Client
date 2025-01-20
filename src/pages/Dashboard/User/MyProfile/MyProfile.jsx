@@ -3,8 +3,10 @@ import useAuth from "../../../../hooks/useAuth";
 import axios from "axios";
 import LoadingPage from "../../../LoadingPage/LoadingPage";
 import { format } from "date-fns";
+import useTitle from "../../../../../public/PageTitle/title";
 
 const MyProfile = () => {
+  useTitle("My Profile");
   const { user } = useAuth();
 
   // fetch user details
@@ -28,17 +30,17 @@ const MyProfile = () => {
     <div className="max-w-4xl mx-auto p-6 bg-base-100 shadow-md rounded-md mt-8">
       <div className="flex items-center gap-6 mb-8">
         <img
-          src={userInfo.image}
-          alt={userInfo.name}
+          src={userInfo?.image}
+          alt={userInfo?.name}
           className="w-20 h-20 rounded-full border"
         />
         <div>
-          <h1 className="text-2xl font-bold text-primary">{userInfo.name}</h1>
-          <p className="text-sm text-neutral">{userInfo.email}</p>
+          <h1 className="text-2xl font-bold text-primary">{userInfo?.name}</h1>
+          <p className="text-sm text-neutral">{userInfo?.email}</p>
         </div>
 
         <div className="flex gap-4 ml-auto">
-          {userInfo.badge === "bronze" && (
+          {userInfo?.badge === "bronze" && (
             <div className="flex items-center gap-2 px-4 py-2 bg-yellow-500 text-white rounded-md">
               <img
                 src="https://cdn-icons-png.flaticon.com/512/2894/2894962.png"
@@ -48,7 +50,7 @@ const MyProfile = () => {
               <span>Bronze Badge</span>
             </div>
           )}
-          {userInfo.badge === "gold" && (
+          {userInfo?.badge === "gold" && (
             <div className="flex items-center gap-2 px-4 py-2 bg-yellow-400 text-white rounded-md">
               <img
                 src="https://cdn-icons-png.flaticon.com/512/2894/2894963.png"
@@ -72,19 +74,19 @@ const MyProfile = () => {
               >
                 <div className="w-20">
                   <img
-                    src={post.imageUrl}
-                    alt={post.title}
+                    src={post?.imageUrl}
+                    alt={post?.title}
                     className="w-full h-16 object-cover rounded-md"
                   />
                 </div>
                 <div className="flex-1">
                   <h3 className="font-bold text-lg text-primary">
-                    {post.title}
+                    {post?.title}
                   </h3>
                   <p className="text-sm text-neutral">
-                    {post.tag} •{" "}
-                    {post.createdAt
-                      ? format(new Date(post.createdAt), "PPpp")
+                    {post?.tag} •{" "}
+                    {post?.createdAt
+                      ? format(new Date(post?.createdAt), "PPpp")
                       : "Unknown Date"}
                   </p>
                 </div>

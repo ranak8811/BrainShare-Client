@@ -6,49 +6,44 @@ import { useState, useEffect } from "react";
 import AllTags from "../../components/Home/AllTags";
 import ShowAnnouncement from "../../components/Home/ShowAnnouncement";
 import useAnnouncementCount from "../../hooks/useAnnouncementCount";
+import useTitle from "../../../public/PageTitle/title";
 
 const Home = () => {
+  useTitle("Home");
   const [count] = useAnnouncementCount();
   const [search, setSearch] = useState("");
   const [sortByPopularity, setSortByPopularity] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage] = useState(5);
+  const postsPerPage = 5;
 
-  // fetch posts data
-  const {
-    data: posts = [],
-    isLoading,
-    refetch,
-  } = useQuery({
-    queryKey: ["posts", search, sortByPopularity],
+  // fetch paginated posts data
+  const { data, isLoading, refetch } = useQuery({
+    queryKey: ["posts", search, sortByPopularity, currentPage],
     queryFn: async () => {
-      const { data } = await axios(
+      const { data } = await axios.get(
         `${
           import.meta.env.VITE_API_URL
-        }/posts?searchParams=${search}&sortByPopularity=${sortByPopularity}`
+        }/posts?searchParams=${search}&sortByPopularity=${sortByPopularity}&page=${currentPage}&limit=${postsPerPage}`
       );
       return data;
     },
   });
 
-  // pagination logic
-  const indexOfLastPost = currentPage * postsPerPage;
-  const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
-
-  const totalPages = Math.ceil(posts.length / postsPerPage);
+  const posts = data?.posts || [];
+  const totalPosts = data?.totalPosts || 0;
+  const totalPages = Math.ceil(totalPosts / postsPerPage);
 
   useEffect(() => {
     refetch();
-  }, [refetch, search, sortByPopularity]);
+  }, [refetch, search, sortByPopularity, currentPage]);
 
   if (isLoading) return <LoadingPage />;
 
   const handleSearch = (e) => {
     e.preventDefault();
-
     const text = e.target.search.value;
     setSearch(text);
+    setCurrentPage(1);
   };
 
   return (
@@ -111,7 +106,7 @@ const Home = () => {
       </div>
 
       <div className="grid max-w-[700px] mx-auto gap-6">
-        {currentPosts.map((post) => (
+        {posts.map((post) => (
           <PostCard key={post._id} post={post} />
         ))}
       </div>

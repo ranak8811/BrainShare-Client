@@ -42,7 +42,7 @@ const Comments = () => {
     try {
       await axios.patch(
         `${import.meta.env.VITE_API_URL}/report-comment/${selectedComment._id}`,
-        { feedback: selectedComment.feedback }
+        { feedback: selectedComment?.feedback }
       );
       refetch();
       toast.success("Comment reported successfully!");
@@ -89,11 +89,11 @@ const Comments = () => {
             <tbody>
               {comments.map((comment) => (
                 <tr key={comment._id} className="border-t">
-                  <td className="py-2 px-4">{comment.authorEmail}</td>
+                  <td className="py-2 px-4">{comment?.authorEmail}</td>
                   <td className="py-2 px-4">
                     {comment.text.length > 20 ? (
                       <>
-                        {comment.text.substring(0, 20)}...
+                        {comment?.text.substring(0, 20)}...
                         <button
                           className="text-blue-500 underline ml-2"
                           onClick={() => setModalContent(comment.text)}
@@ -102,7 +102,7 @@ const Comments = () => {
                         </button>
                       </>
                     ) : (
-                      comment.text
+                      comment?.text
                     )}
                   </td>
                   <td className="py-2 px-4">
@@ -111,8 +111,8 @@ const Comments = () => {
                       onChange={(e) =>
                         handleFeedbackChange(comment, e.target.value)
                       }
-                      disabled={comment.reported}
-                      defaultValue={comment.feedback || "Select feedback"}
+                      disabled={comment?.reported}
+                      defaultValue={comment?.feedback || "Select feedback"}
                     >
                       <option disabled>Select feedback</option>
                       <option value="Irrelevant">Irrelevant</option>
@@ -125,7 +125,7 @@ const Comments = () => {
                       className={`${
                         selectedComment &&
                         selectedComment._id === comment._id &&
-                        selectedComment.feedback
+                        selectedComment?.feedback
                           ? "bg-red-500"
                           : "bg-gray-300 cursor-not-allowed"
                       } text-white px-4 py-2 rounded-md`}
@@ -133,12 +133,12 @@ const Comments = () => {
                         !(
                           selectedComment &&
                           selectedComment._id === comment._id &&
-                          selectedComment.feedback
+                          selectedComment?.feedback
                         )
                       }
                       onClick={handleReport}
                     >
-                      {comment.reported ? "Reported" : "Report"}
+                      {comment?.reported ? "Reported" : "Report"}
                     </button>
                   </td>
                 </tr>

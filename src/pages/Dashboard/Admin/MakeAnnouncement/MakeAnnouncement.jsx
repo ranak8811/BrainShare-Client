@@ -3,8 +3,10 @@ import useAuth from "../../../../hooks/useAuth";
 import toast from "react-hot-toast";
 import useAxiosSecure from "../../../../hooks/axiosSecure";
 import { useNavigate } from "react-router-dom";
+import useTitle from "../../../../../public/PageTitle/title";
 
 const MakeAnnouncement = () => {
+  useTitle("Make announcement");
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
   const navigate = useNavigate();

@@ -8,8 +8,10 @@ import { useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import LoadingPage from "../../../LoadingPage/LoadingPage";
+import useTitle from "../../../../../public/PageTitle/title";
 
 const AddPost = () => {
+  useTitle("Add Post");
   const axiosSecure = useAxiosSecure();
   const navigate = useNavigate();
   const { user } = useAuth();

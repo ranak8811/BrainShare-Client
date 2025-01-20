@@ -3,8 +3,10 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../../hooks/axiosSecure";
 import LoadingPage from "../../../LoadingPage/LoadingPage";
 import Pagination from "./Pagination";
+import useTitle from "../../../../../public/PageTitle/title";
 
 const ManageUsers = () => {
+  useTitle("Manage Users");
   const axiosSecure = useAxiosSecure();
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;

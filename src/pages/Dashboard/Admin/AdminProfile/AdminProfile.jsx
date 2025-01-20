@@ -6,10 +6,12 @@ import LoadingPage from "../../../LoadingPage/LoadingPage";
 import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from "recharts";
 import { FaUsers, FaFileAlt, FaCommentDots } from "react-icons/fa";
 import toast from "react-hot-toast";
+import useTitle from "../../../../../public/PageTitle/title";
 
 const COLORS = ["#76c550", "#90dbaf", "#67cda3"];
 
 const AdminProfile = () => {
+  useTitle("Admin Profile");
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
   const [tag, setTag] = useState("");

@@ -6,8 +6,10 @@ import LoadingPage from "../../../LoadingPage/LoadingPage";
 import { imageUpload } from "../../../../api/utils";
 import toast from "react-hot-toast";
 import Select from "react-select";
+import useTitle from "../../../../../public/PageTitle/title";
 
 const EditPost = () => {
+  useTitle("Edit Post");
   const { id } = useParams();
   const axiosSecure = useAxiosSecure();
   const navigate = useNavigate();

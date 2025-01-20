@@ -8,8 +8,10 @@ import toast from "react-hot-toast";
 import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import SocialLogin from "../../components/SocialLogin/SocialLogin";
+import useTitle from "../../../public/PageTitle/title";
 
 const Register = () => {
+  useTitle("Register");
   const { registerNewUser, updateUserProfile } = useAuth();
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();

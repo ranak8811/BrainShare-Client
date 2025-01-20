@@ -5,18 +5,20 @@ import logo from "../../assets/brain_logo.png";
 import useAuth from "../../hooks/useAuth";
 import useRole from "../../hooks/useRole";
 import usePostCount from "../../hooks/usePostCount";
+import LoadingPage from "../../pages/LoadingPage/LoadingPage";
 
 const Sidebar = () => {
   const { user, logOutUser } = useAuth();
   const [role] = useRole();
-  const [postCount, badge] = usePostCount();
+  const [postCount, badge, isLoading] = usePostCount();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
-  console.log(postCount, badge);
+  // console.log(postCount, badge);
+  if (isLoading) return <LoadingPage></LoadingPage>;
 
   return (
     <div className="flex lg:min-h-screen">
