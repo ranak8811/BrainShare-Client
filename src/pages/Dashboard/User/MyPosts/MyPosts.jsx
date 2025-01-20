@@ -6,6 +6,7 @@ import LoadingPage from "../../../LoadingPage/LoadingPage";
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 import useTitle from "../../../../../public/PageTitle/title";
+import Swal from "sweetalert2";
 
 const MyPosts = () => {
   useTitle("My Posts");
@@ -37,14 +38,33 @@ const MyPosts = () => {
   const { posts, totalPages } = postsData;
 
   const handleDelete = async (id) => {
-    try {
-      await axiosSecure.delete(`/posts/${id}`);
-      refetch();
-      toast.success(`Post deleted successfully`);
-    } catch (error) {
-      console.log(error);
-      toast.error(`Post delete error: ${error.message}`);
-    }
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          const { data } = await axiosSecure.delete(`/posts/${id}`);
+
+          if (data.deletedCount) {
+            Swal.fire({
+              title: "Deleted!",
+              text: "Post deleted successfully",
+              icon: "success",
+            });
+            refetch();
+          }
+        } catch (error) {
+          console.log(error);
+          toast.error(`Post delete error: ${error.message}`);
+        }
+      }
+    });
   };
 
   // pagination handler

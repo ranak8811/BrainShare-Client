@@ -4,6 +4,7 @@ import useAuth from "../../../../hooks/useAuth";
 import LoadingPage from "../../../LoadingPage/LoadingPage";
 import toast from "react-hot-toast";
 import useTitle from "../../../../../public/PageTitle/title";
+import Swal from "sweetalert2";
 
 const ReportedComments = () => {
   useTitle("Reported Comments");
@@ -24,14 +25,32 @@ const ReportedComments = () => {
   });
 
   const handleDelete = async (id) => {
-    try {
-      await axiosSecure.delete(`/reported-comments/${id}`);
-      refetch();
-      toast.success(`Comment deleted successfully`);
-    } catch (error) {
-      console.error(error);
-      toast.error(`Comment delete error: ${error.message}`);
-    }
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        try {
+          const { data } = await axiosSecure.delete(`/reported-comments/${id}`);
+          if (data.deletedCount) {
+            Swal.fire({
+              title: "Deleted!",
+              text: "Comment deleted successfully",
+              icon: "success",
+            });
+            refetch();
+          }
+        } catch (error) {
+          console.error(error);
+          toast.error(`Comment delete error: ${error.message}`);
+        }
+      }
+    });
   };
 
   if (isLoading) {
