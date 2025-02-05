@@ -1,4 +1,4 @@
-# Brainshare
+# BrainShare
 
 Brainshare is a dynamic social platform where users can share posts, engage with others through comments, and upvote or downvote posts. The platform also includes an admin panel for managing users and reported comments, and offers a premium membership feature powered by Stripe payment integration.
 
