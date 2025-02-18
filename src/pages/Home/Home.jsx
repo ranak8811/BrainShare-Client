@@ -7,6 +7,7 @@ import AllTags from "../../components/Home/AllTags";
 import ShowAnnouncement from "../../components/Home/ShowAnnouncement";
 import useAnnouncementCount from "../../hooks/useAnnouncementCount";
 import useTitle from "../../../public/PageTitle/title";
+import Newsletter from "../../components/Home/Newsletter";
 
 const Home = () => {
   useTitle("Home");
@@ -114,6 +115,10 @@ const Home = () => {
       {posts.length === 0 && (
         <p className="text-center text-gray-600 mt-6">No posts found.</p>
       )}
+
+      <section className="my-6">
+        <Newsletter />
+      </section>
     </div>
   );
 };

@@ -21,7 +21,7 @@ const AllTags = () => {
         {tags.map((tag) => (
           <div
             key={tag._id}
-            className="bg-accent text-white px-4 py-2 rounded-full shadow-md hover:bg-blue-600 transition duration-300 text-sm md:text-base"
+            className="bg-accent text-white px-4 py-2 rounded-full shadow-md hover:bg-primary transition duration-300 text-sm md:text-base"
           >
             {tag.tag}
           </div>
