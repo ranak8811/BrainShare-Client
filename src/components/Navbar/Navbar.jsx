@@ -38,6 +38,9 @@ const Navbar = () => {
             <li>
               <Link to="/membership">Membership</Link>
             </li>
+            <li>
+              <Link to="/dashboard">Dashboard</Link>
+            </li>
           </ul>
         </div>
         <Link to="/" className="flex items-center space-x-2">
@@ -53,6 +56,9 @@ const Navbar = () => {
           </li>
           <li>
             <Link to="/membership">Membership</Link>
+          </li>
+          <li>
+            <Link to="/dashboard">Dashboard</Link>
           </li>
         </ul>
       </div>
