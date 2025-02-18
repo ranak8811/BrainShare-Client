@@ -9,6 +9,7 @@ import useAnnouncementCount from "../../hooks/useAnnouncementCount";
 import useTitle from "../../../public/PageTitle/title";
 import Newsletter from "../../components/Home/Newsletter";
 import FrequentlyAskedQues from "../../components/Home/FrequentlyAskedQues";
+import Review from "../../components/Home/Review";
 
 const Home = () => {
   useTitle("Home");
@@ -135,6 +136,10 @@ const Home = () => {
 
       <section>
         <FrequentlyAskedQues />
+      </section>
+
+      <section className="mt-6">
+        <Review />
       </section>
 
       <section className="my-6">
