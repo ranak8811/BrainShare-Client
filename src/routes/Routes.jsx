@@ -20,6 +20,7 @@ import Membership from "../pages/Membership/Membership";
 import EditPost from "../pages/Dashboard/User/EditPost/EditPost";
 import DefaultPage from "../pages/Dashboard/DefaultPage/DefaultPage";
 import Survey from "../pages/Survey/Survey";
+import AboutUs from "../pages/AboutUs/AboutUs";
 
 const router = createBrowserRouter([
   {
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
       {
         path: "/survey",
         element: <Survey></Survey>,
+      },
+      {
+        path: "/about",
+        element: <AboutUs></AboutUs>,
       },
     ],
   },
