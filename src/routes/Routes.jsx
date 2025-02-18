@@ -19,6 +19,7 @@ import AdminRoute from "./AdminRoute";
 import Membership from "../pages/Membership/Membership";
 import EditPost from "../pages/Dashboard/User/EditPost/EditPost";
 import DefaultPage from "../pages/Dashboard/DefaultPage/DefaultPage";
+import Survey from "../pages/Survey/Survey";
 
 const router = createBrowserRouter([
   {
@@ -45,6 +46,10 @@ const router = createBrowserRouter([
             <Membership></Membership>
           </PrivateRouter>
         ),
+      },
+      {
+        path: "/survey",
+        element: <Survey></Survey>,
       },
     ],
   },

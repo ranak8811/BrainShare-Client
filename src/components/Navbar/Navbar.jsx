@@ -36,6 +36,9 @@ const Navbar = () => {
               <Link to="/">Home</Link>
             </li>
             <li>
+              <Link to="/survey">Survey</Link>
+            </li>
+            <li>
               <Link to="/membership">Membership</Link>
             </li>
             <li>
@@ -53,6 +56,9 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1 space-x-4">
           <li>
             <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/survey">Survey</Link>
           </li>
           <li>
             <Link to="/membership">Membership</Link>

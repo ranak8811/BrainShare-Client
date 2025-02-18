@@ -11,7 +11,7 @@ const Membership = () => {
   const { user } = useAuth();
 
   return (
-    <div className="min-h-screen bg-[#f3faf0] text-[#040903] flex flex-col items-center px-4 py-8">
+    <div className="min-h-[calc(100vh-68px)] bg-[#f3faf0] text-[#040903] flex flex-col items-center px-4 py-8">
       {/* Greeting Section */}
       <div className="text-center">
         <h1 className="text-3xl md:text-4xl font-bold mb-4">
