@@ -8,6 +8,7 @@ import ShowAnnouncement from "../../components/Home/ShowAnnouncement";
 import useAnnouncementCount from "../../hooks/useAnnouncementCount";
 import useTitle from "../../../public/PageTitle/title";
 import Newsletter from "../../components/Home/Newsletter";
+import FrequentlyAskedQues from "../../components/Home/FrequentlyAskedQues";
 
 const Home = () => {
   useTitle("Home");
@@ -112,9 +113,29 @@ const Home = () => {
         ))}
       </div>
 
+      <div className="flex items-center justify-center my-4 gap-2">
+        {[...Array(totalPages).keys()].map((number) => (
+          <button
+            key={number}
+            onClick={() => setCurrentPage(number + 1)}
+            className={`py-1 px-3 rounded-md ${
+              currentPage === number + 1
+                ? "bg-primary text-white"
+                : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+            }`}
+          >
+            {number + 1}
+          </button>
+        ))}
+      </div>
+
       {posts.length === 0 && (
         <p className="text-center text-gray-600 mt-6">No posts found.</p>
       )}
+
+      <section>
+        <FrequentlyAskedQues />
+      </section>
 
       <section className="my-6">
         <Newsletter />
