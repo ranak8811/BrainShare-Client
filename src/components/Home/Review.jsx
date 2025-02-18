@@ -12,16 +12,16 @@ const reviews = [
   {
     name: "James Smith",
     review:
-      "The premium membership is totally worth it! I love the exclusive features and the seamless experience.",
-    avatar: "https://i.pravatar.cc/100?img=2",
-    rating: 4,
+      "Posting and engaging with others is so easy. I highly recommend this platform to everyone!",
+    avatar: "https://i.pravatar.cc/100?img=3",
+    rating: 5,
   },
   {
     name: "Ayesha Rahman",
     review:
-      "Posting and engaging with others is so easy. I highly recommend this platform to everyone!",
-    avatar: "https://i.pravatar.cc/100?img=3",
-    rating: 5,
+      "The premium membership is totally worth it! I love the exclusive features and the seamless experience.",
+    avatar: "https://i.pravatar.cc/100?img=5",
+    rating: 4,
   },
 ];
 
@@ -63,7 +63,9 @@ const Review = () => {
         {reviews.map((user, index) => (
           <div
             key={index}
-            className="bg-white p-6 rounded-lg shadow-lg animate__animated animate__zoomIn"
+            className={`bg-white p-6 rounded-lg shadow-lg ${
+              isVisible ? "animate__animated animate__zoomIn" : ""
+            }`}
             style={{ animationDelay: `${index * 0.2}s` }} // Delay effect
           >
             <div className="flex items-center space-x-4">

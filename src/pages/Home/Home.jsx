@@ -50,8 +50,8 @@ const Home = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 text-gray-800 px-6 py-8">
-      <div className="bg-primary text-white p-6 rounded-lg shadow-lg mb-6">
+    <div className="min-h-screen bg-gray-100 text-gray-800">
+      <div className="bg-primary text-white p-6 rounded-lg shadow-lg my-8">
         <h1 className="text-3xl font-bold text-center mb-4">
           Discover Amazing Posts
         </h1>
@@ -80,7 +80,7 @@ const Home = () => {
         </div>
       )}
 
-      <div className="flex items-center justify-between mb-4">
+      <div className="flex items-center justify-between mb-4  px-6 py-8">
         <button
           onClick={() => {
             setSortByPopularity(!sortByPopularity);

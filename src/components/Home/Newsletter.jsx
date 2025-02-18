@@ -17,7 +17,7 @@ const Newsletter = () => {
     setEmail(""); // Clear input after submission
   };
   return (
-    <div className="min-h-[300px] flex flex-col items-center justify-center bg-base-100 text-black px-6 py-8 rounded-lg shadow-lg">
+    <div className="min-h-[300px] flex flex-col items-center justify-center bg-base-100 text-primary px-6 py-8 rounded-lg shadow-lg">
       <div className="w-56 md:w-72">
         <Lottie animationData={newslettersLottieFiles} loop />
       </div>
