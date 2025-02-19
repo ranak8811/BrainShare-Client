@@ -166,6 +166,14 @@ const Register = () => {
             >
               Register
             </button>
+
+            {/* Go Home Button */}
+            <button
+              onClick={() => navigate("/")}
+              className="btn bg-gray-100 btn-outline hover:btn-accent text-black w-full mt-2"
+            >
+              Go to Homepage
+            </button>
           </form>
 
           <p className="text-center text-sm text-text mt-4">

@@ -53,7 +53,7 @@ const AdminProfile = () => {
   return (
     <div className="min-h-screen bg-background text-text px-6 py-8">
       <div className="bg-white p-6 rounded-lg shadow-lg max-w-3xl mx-auto border border-accent">
-        <div className="flex items-center gap-6">
+        <div className="flex items-center justify-center gap-6">
           <img
             src={adminInfo.image}
             alt="Admin"

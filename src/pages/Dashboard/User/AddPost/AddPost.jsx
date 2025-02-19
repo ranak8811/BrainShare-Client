@@ -83,7 +83,7 @@ const AddPost = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto p-6 bg-base-100 shadow-md rounded-md  mt-8">
+    <div className="max-w-4xl mx-auto p-6 bg-base-100 shadow-md rounded-md mt-8">
       <h2 className="text-2xl font-bold text-primary mb-6">Add a New Post</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
@@ -144,7 +144,7 @@ const AddPost = () => {
         </div>
 
         <div>
-          <button type="submit" className="btn btn-primary w-full">
+          <button type="submit" className="btn text-white btn-primary w-full">
             Add Post
           </button>
         </div>
