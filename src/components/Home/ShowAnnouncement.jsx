@@ -26,7 +26,9 @@ const ShowAnnouncement = () => {
 
   return (
     <div className="max-w-5xl mx-auto px-4 py-6">
-      <h2 className="text-2xl font-bold text-center mb-6 ">Announcements</h2>
+      <h2 className="text-2xl font-bold text-center mb-6 ">
+        Announcements ({announcements.length})
+      </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {visibleAnnouncements.map((announcement) => (
           <div

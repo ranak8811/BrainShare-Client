@@ -97,7 +97,7 @@ const MyPosts = () => {
                   <td className="py-2 px-4">
                     <Link
                       to={`/dashboard/editPost/${post._id}`}
-                      className="bg-accent text-white px-4 py-2 rounded-md mr-2"
+                      className="bg-primary text-white px-4 py-2 rounded-md mr-2"
                     >
                       Edit
                     </Link>
@@ -110,7 +110,7 @@ const MyPosts = () => {
                       Comment
                     </Link>
                     <button
-                      className="bg-red-500 text-white px-4 py-2 rounded-md"
+                      className="bg-red-400 text-white px-4 py-2 rounded-md"
                       onClick={() => handleDelete(post._id)}
                     >
                       Delete
